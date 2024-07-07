@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="js/marked.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function loadMarkdown() {
+                const timestamp = new Date().getTime();  // 获取当前时间戳
+                fetch(`markdown.md?${timestamp}`)  // 在请求URL后添加时间戳
+            fetch('markdow.md')
+            .then(response => response.text())
+            .then(text => {document.getElementById('markdown-container').innerHTML = marked.parse(text);})
+            .catch(err => console.error('错误加载Markdown文件:', err));
+        };
+        loadMarkdown();  // 初次加载
+    });
+    </script>
+
+</head>
+<body>
+    <div id="markdown-container"></div>
+</body>
+</html>
+
+
